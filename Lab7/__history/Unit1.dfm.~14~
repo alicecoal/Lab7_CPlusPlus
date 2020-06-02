@@ -1,0 +1,132 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 414
+  ClientWidth = 384
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  DesignSize = (
+    384
+    414)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object LabelHash: TLabel
+    Left = 58
+    Top = 21
+    Width = 76
+    Height = 13
+    Anchors = [akRight, akBottom]
+    Caption = 'Hash table size:'
+    ExplicitLeft = 8
+  end
+  object Memo1: TMemo
+    Left = 8
+    Top = 64
+    Width = 350
+    Height = 208
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Lines.Strings = (
+      'Memo1')
+    ReadOnly = True
+    TabOrder = 0
+    ExplicitWidth = 300
+  end
+  object ButtonRandomize: TButton
+    Left = 286
+    Top = 8
+    Width = 90
+    Height = 42
+    Anchors = [akRight, akBottom]
+    Caption = 'Full randomly'
+    TabOrder = 1
+    OnClick = ButtonRandomizeClick
+    ExplicitLeft = 236
+  end
+  object ButtonClear: TButton
+    Left = 194
+    Top = 8
+    Width = 70
+    Height = 42
+    Anchors = [akRight, akBottom]
+    Caption = 'Clear'
+    TabOrder = 2
+    OnClick = ButtonClearClick
+    ExplicitLeft = 144
+  end
+  object ButtonDelete: TButton
+    Left = 23
+    Top = 337
+    Width = 100
+    Height = 42
+    Anchors = [akLeft, akBottom]
+    Caption = 'Delete number'
+    TabOrder = 3
+    OnClick = ButtonDeleteClick
+  end
+  object Number: TEdit
+    Left = 49
+    Top = 385
+    Width = 50
+    Height = 21
+    Anchors = [akLeft, akBottom]
+    TabOrder = 4
+  end
+  object Table1: TEdit
+    Left = 140
+    Top = 18
+    Width = 21
+    Height = 21
+    Anchors = [akRight, akBottom]
+    NumbersOnly = True
+    TabOrder = 5
+    Text = '7'
+    ExplicitLeft = 90
+  end
+  object ButtonFindMax: TButton
+    Left = 184
+    Top = 334
+    Width = 150
+    Height = 42
+    Anchors = [akRight, akBottom]
+    Caption = 'Find min number'
+    TabOrder = 6
+    OnClick = ButtonFindMaxClick
+    ExplicitLeft = 188
+  end
+  object ButtonAdd: TButton
+    Left = 23
+    Top = 286
+    Width = 100
+    Height = 42
+    Anchors = [akLeft, akBottom]
+    Caption = 'Add number'
+    TabOrder = 7
+    OnClick = ButtonAddClick
+  end
+  object ButtonFind: TButton
+    Left = 212
+    Top = 286
+    Width = 100
+    Height = 42
+    Anchors = [akLeft, akBottom]
+    Caption = 'Find number'
+    TabOrder = 8
+    OnClick = ButtonFindClick
+  end
+  object Memo2: TMemo
+    Left = 173
+    Top = 64
+    Width = 185
+    Height = 208
+    Lines.Strings = (
+      'Memo2')
+    TabOrder = 9
+  end
+end

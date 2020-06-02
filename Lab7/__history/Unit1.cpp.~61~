@@ -1,0 +1,130 @@
+// ---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Hash.h"
+#include "Stack.h"
+// ---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+// ---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner) : TForm(Owner) {
+}
+// ---------------------------------------------------------------------------
+Hash* a;
+
+void Showed(TMemo* Memo)
+{
+		Memo->Lines->Clear();
+		for (int i = 0; i < a->size; i++)
+		{
+			AnsiString s = "";
+			s = IntToStr(i) + ": ";
+			Stack y = a->Table[i];
+			AnsiString str = "", s1="";
+			str = y.print();
+			Memo->Lines->Add(s+str);
+		}
+}
+
+
+int FindMin(Hash x)
+	{
+		int min = 2000000000;
+		int min_index = 0;
+		for (int i = 0; i < x.size; i++)
+		{
+			Stack g = x.Table[i];
+			int curmin = g.findmin();
+			if (curmin<min)
+			{
+				min = curmin;
+				min_index = i;
+			}
+		}
+		return min_index;
+	}
+
+// ---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonClearClick(TObject *Sender)
+{
+	delete a;
+	try {
+		int x = StrToInt(Table1->Text);
+		if (x < 1) throw;
+		a = new Hash(x);
+	}
+	catch (...)
+	{
+		ShowMessage("ERROR");
+		Table1->Clear();
+	}
+	Showed(Memo1);
+}
+// ---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonRandomizeClick(TObject *Sender)
+{
+	a->Randomize();
+	Showed(Memo1);
+}
+// ---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonFindMaxClick(TObject *Sender)
+{
+	ShowMessage("Min number is in " + IntToStr(FindMin(*a)) + "th array");
+}
+// ---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonAddClick(TObject *Sender)
+{
+	try
+	{
+		int x = StrToInt(Number->Text);
+		a->insert(x);
+	}
+	catch (...)
+	{
+		ShowMessage("Wrong number");
+	}
+	Showed(Memo1);
+}
+// ---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonDeleteClick(TObject *Sender) {
+	try {
+		a->erase(StrToInt(Number->Text));
+	}
+	catch (...)
+	{
+		ShowMessage("Wrong number");
+	}
+	Showed(Memo1);
+}
+// ---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonFindClick(TObject *Sender) {
+	try {
+		if (a->contain(StrToInt(Number->Text)))
+			ShowMessage("True, there is " + Number->Text);
+		else
+			ShowMessage("False, there is no " + Number->Text);
+	}
+	catch (...) {
+		ShowMessage("Wrong number");
+	}
+}
+// ---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+	a = new Hash(StrToInt(Table1->Text));
+    ShowMessage("Hi");
+	Showed(Memo1);
+}
+//---------------------------------------------------------------------------
+

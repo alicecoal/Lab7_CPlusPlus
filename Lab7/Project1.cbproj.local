@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.898,F:\Lab7\CHash.h=F:\Lab7\Hash.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.138,F:\Lab7\CList.h=F:\Lab7\Stack.h</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="Hash.h"/>
+    <File Path="Project1.cpp"/>
+    <File Path="Project1PCH1.h"/>
+    <File Path="Stack.h"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit1.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

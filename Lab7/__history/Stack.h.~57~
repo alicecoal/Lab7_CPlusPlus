@@ -1,0 +1,121 @@
+#ifndef StackH
+#define StackH
+
+
+class Stack
+{
+public:
+	struct Vertex
+	{
+		int value;
+		Vertex* prev;
+	};
+	Vertex* current;
+
+public:
+
+	Stack()
+	{
+		current = nullptr;
+	}
+
+	~Stack()
+	{
+		while(current != nullptr)
+			pop_back();
+	}
+
+	void push_back(int x)
+	{
+		ShowMessage("START PUSH");
+        if(current != nullptr) ShowMessage("current value is " + IntToStr(current->value));
+		Vertex* w = new Vertex;
+		if(!w)
+		{
+			ShowMessage("ERROR");
+			throw 42;
+		}
+
+		w->value = x;
+		w->prev = current;
+		current = w;
+	}
+
+	int pop_back()
+	{
+		if (current == nullptr) throw 42;
+		int y = current->value;
+		Vertex* d = current;
+		current = current->prev;
+		delete d;
+		return y;
+	}
+
+	int FindMin()
+	{
+		int min = 2000000000;
+		Vertex* y = current;
+		while (y != nullptr)
+		{
+			if (y->value < min) min = y->value;
+			y = y->prev;
+		}
+		return min;
+	}
+
+	bool empty()
+	{
+		return (current == nullptr);
+	}
+
+	bool find(int x)
+	{
+		while (current != nullptr)
+		{
+			if (current->value == x) return true;
+			current = current->prev;
+		}
+		return false;
+	}
+
+	Stack del(int data)
+	{
+		Vertex *p = current->prev;
+		Vertex *t;
+		while(p->prev != nullptr)
+		{
+			if (data == p->value)
+			{
+				t = p;
+			}
+			p = p->prev;
+		}
+		p = this->current;
+		if (p->value != t->value) {
+			while (p->prev != t)
+			{
+				p = p->prev;
+			}
+			p->prev = t->prev;
+		}
+		else
+			current = t->prev;
+		delete t;
+		return *this;
+	}
+
+	AnsiString show(AnsiString s)
+	{
+		Vertex* y = current;
+		while (y != nullptr)
+			{
+				s += IntToStr(y->value) + " | ";
+				y = y->prev;
+			}
+		return s;
+	}
+
+};
+
+//---------------------------------------------------------------------------
+#endif
